@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApproximatingMathConstantsConsoleApp", "ApproximatingMathConstantsConsoleApp\ApproximatingMathConstantsConsoleApp.csproj", "{C5894E58-894B-4EE1-A4D1-FBE76AA2FAB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AveragesConsoleApp", "AveragesConsoleApp\AveragesConsoleApp.csproj", "{C5C0C83E-B648-41E0-A6F5-DBC2C6B3211F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchNumberSystemConsoleApp", "SwitchNumberSystemConsoleApp\SwitchNumberSystemConsoleApp.csproj", "{97E7FFE7-5A07-4330-8289-CDBDC1C383F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DichotomyMethod", "DichotomyMethod\DichotomyMethod.csproj", "{71C60F28-EA9D-4ADF-BB64-3BA7B01E9B98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareMatrix", "SquareMatrix\SquareMatrix.csproj", "{634FC538-1CF7-4F08-A1FE-871AB20F1EE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComplexAndVector", "ComplexAndVector\ComplexAndVector.csproj", "{E39210EB-027D-4DCF-8BCD-5EEB1E3104B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileAnalyzer", "FileAnalyzer\FileAnalyzer.csproj", "{F45FD5CD-0FF4-4B82-BFF5-ADD24A13BBFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5894E58-894B-4EE1-A4D1-FBE76AA2FAB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5894E58-894B-4EE1-A4D1-FBE76AA2FAB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5894E58-894B-4EE1-A4D1-FBE76AA2FAB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5894E58-894B-4EE1-A4D1-FBE76AA2FAB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C0C83E-B648-41E0-A6F5-DBC2C6B3211F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C0C83E-B648-41E0-A6F5-DBC2C6B3211F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C0C83E-B648-41E0-A6F5-DBC2C6B3211F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C0C83E-B648-41E0-A6F5-DBC2C6B3211F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E7FFE7-5A07-4330-8289-CDBDC1C383F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E7FFE7-5A07-4330-8289-CDBDC1C383F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E7FFE7-5A07-4330-8289-CDBDC1C383F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E7FFE7-5A07-4330-8289-CDBDC1C383F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C60F28-EA9D-4ADF-BB64-3BA7B01E9B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C60F28-EA9D-4ADF-BB64-3BA7B01E9B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C60F28-EA9D-4ADF-BB64-3BA7B01E9B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C60F28-EA9D-4ADF-BB64-3BA7B01E9B98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{634FC538-1CF7-4F08-A1FE-871AB20F1EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{634FC538-1CF7-4F08-A1FE-871AB20F1EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{634FC538-1CF7-4F08-A1FE-871AB20F1EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{634FC538-1CF7-4F08-A1FE-871AB20F1EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E39210EB-027D-4DCF-8BCD-5EEB1E3104B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E39210EB-027D-4DCF-8BCD-5EEB1E3104B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E39210EB-027D-4DCF-8BCD-5EEB1E3104B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E39210EB-027D-4DCF-8BCD-5EEB1E3104B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F45FD5CD-0FF4-4B82-BFF5-ADD24A13BBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F45FD5CD-0FF4-4B82-BFF5-ADD24A13BBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F45FD5CD-0FF4-4B82-BFF5-ADD24A13BBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F45FD5CD-0FF4-4B82-BFF5-ADD24A13BBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
