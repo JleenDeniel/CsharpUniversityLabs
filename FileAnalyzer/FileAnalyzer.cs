@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace FileAnalyzer {
     public class FileAnalyzer {
@@ -18,7 +19,7 @@ namespace FileAnalyzer {
             
             using (var reader = new StreamReader(path)) {
                 while (!reader.EndOfStream) {
-                    string[] line = reader.ReadLine()?.Split(new[] {' ', '\t', ',', '.'}, StringSplitOptions.RemoveEmptyEntries);
+                    string[] line = reader.ReadLine()?.Split(new[] {' ', '\t'}, StringSplitOptions.RemoveEmptyEntries);
                     if (line != null) {
                         foreach (var word in line) { 
                             string updWord = word.Trim(new[] {',', '.', '?', '!'});
@@ -40,6 +41,8 @@ namespace FileAnalyzer {
         
         public  Dictionary<string, int> MostFrequentWord(){
             var resultDict = new Dictionary<string, int>();
+            if(_textDictionary.Count == 0)
+                throw new FileWithoutWordsException("Your file does not contain words!", this);
             var maxValue = _textDictionary.Values.Max();
             foreach (var pair in _textDictionary) {
                 if (pair.Value == maxValue) {
@@ -54,10 +57,9 @@ namespace FileAnalyzer {
             if(!_textDictionary.ContainsKey(wordToFind)) { 
                 throw new ArgumentException("No such word");
             }
-            else {
-                //todo вернуть кортеж
-                return Tuple.Create(wordToFind, _textDictionary[wordToFind]);
-            }
+            //todo вернуть кортеж
+            return Tuple.Create(wordToFind, _textDictionary[wordToFind]);
+            
         }
         
         //todo поменять логику: сначала парсить а потом джоинить
@@ -65,4 +67,18 @@ namespace FileAnalyzer {
 
         
     }
+
+    [Serializable]
+    public class FileWithoutWordsException : Exception {
+        private readonly FileAnalyzer _val;
+
+        public FileWithoutWordsException(string yourFileDoesNotContainWords){
+        }
+
+        public FileWithoutWordsException(string message, FileAnalyzer val) : base(message){
+            _val = val;
+        }
+        
+    }
+    
 }
