@@ -33,15 +33,8 @@ namespace ComplexAndVector {
             set { _valuesArray[i] = value; }
         }
 
-        //todo 
-        //public int Module() {
-        //    T sum = (dynamic)0;
-        //    for(int i = 0; i < Size; i++) {
-        //        sum += Complex.Pow((dynamic)this[i], 2); 
-        //    }
-        //    return Complex.Sqrt((dynamic)sum, 2);
-        //}
-
+        
+        //todo возвращать для комплексного квадрат суммы модулей
         public T Module() {
             T res = new T();
             if (this[0] is Complex) {
@@ -119,14 +112,13 @@ namespace ComplexAndVector {
             return Multiply(left, right);
         }
 
-        public static Vector<T> operator *(T left, Vector<T> right) => right * left;
-           
+        public static Vector<T> operator *(T left, Vector<T> right){
+            return Multiply(right, left);
+
+        }
         
-        //todo добавить проверку на ЛНЗ
+
         public static Vector<T>[] Orthogonolization(Vector<T>[] vectorsArray) {
-            if (!LinearIndependence(vectorsArray)) {
-                throw new ArgumentException("Линейно зависимая система");
-            }
             Vector<T>[] result = new Vector<T>[vectorsArray.Length];
             result[0] = new Vector<T>(vectorsArray[0]._valuesArray);            
             for (int i = 1; i < vectorsArray.Length; i++) {
@@ -139,20 +131,6 @@ namespace ComplexAndVector {
             return result;
         }
 
-        public static bool LinearIndependence(Vector<T>[] vectors) {
-            Vector<T> result = new Vector<T>(vectors[0].Size);
-            foreach(var vector in vectors) {
-                result += vector;
-            }
-            int counter = 0;
-            for(int i = 0; i < result.Size; i++) {
-                if((dynamic)result[i] == 0 || (dynamic)result[i] == Complex.Zero) {
-                    counter++;
-                }
-            }
-            return counter == result.Size;
-               
-        }
 
         public override string ToString() {
             StringBuilder result = new StringBuilder();
@@ -197,7 +175,7 @@ namespace ComplexAndVector {
             if(!CheckSize(this, other)) {
                 return false;
             }
-            for(int i = 0; i < this.Size; i++) {
+            for(int i = 0; i < Size; i++) {
                 if ((dynamic)this[i] != other[i])
                     return false;
             }

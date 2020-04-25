@@ -49,7 +49,6 @@ namespace ComplexAndVector{
         
 
         public static Complex Pow(Complex complexNum, double power) {
-            //Complex result = new Complex();
             double cosX = complexNum._real / complexNum.Module;
             double angle = Math.Acos(cosX);
             double resPower = Math.Pow(complexNum.Module, power);
@@ -58,9 +57,9 @@ namespace ComplexAndVector{
             return new Complex(Math.Round(resPower,2), Math.Round(cosX,2), Math.Round(sinX,2));
         }
 
-        public static double? Arg(Complex mcomp) {
+        public static double Arg(Complex mcomp) {
             if (mcomp._real > double.Epsilon) {
-                return Math.Atan(mcomp._imaginary / mcomp._imaginary);
+                return Math.Atan(mcomp._imaginary / mcomp._real);
             }
             if (mcomp._real < double.Epsilon && mcomp._imaginary >= double.Epsilon) {
                 return Math.PI + Math.Atan(mcomp._imaginary / mcomp._real);
@@ -76,25 +75,25 @@ namespace ComplexAndVector{
                 return -Math.PI;
             }
 
-            return null;
+            return 0;
         }
         //todo возвращать массив значений
-        public static Complex[] Sqrt(Complex A, int sqrtPow)
+        public static Complex[] Root(Complex complex, int sqrtPow)
         {
             if (sqrtPow < 0)
             {
                 throw new ArgumentException("Корень отрицательной степени", nameof(sqrtPow));
             }
-            if (Arg(A) == null)
+            if (Arg(complex) == null)
             {
                 throw new ArgumentException("NULL", nameof(sqrtPow));
             }
             var res = new Complex[sqrtPow];
-            var complexTmpAbs = new Complex(Math.Pow(A.Module, (1.0 / sqrtPow)), 0.0);
+            var complexTmpAbs = new Complex(Math.Pow(complex.Module, (1.0 / sqrtPow)), 0.0);
             for (int k = 0; k < sqrtPow; k++)
             {
-                var comp = new Complex(Math.Cos(((double)Arg(A) + 2 * Math.PI * k) / sqrtPow),
-                                                    Math.Sin(((double)Arg(A) + 2 * Math.PI * k) / sqrtPow));
+                var comp = new Complex(Math.Cos((Arg(complex) + 2 * Math.PI * k) / sqrtPow),
+                                                    Math.Sin((Arg(complex) + 2 * Math.PI * k) / sqrtPow));
                 res[k] = complexTmpAbs * comp;
                 if (Math.Abs(res[k]._real) < double.Epsilon)
                 {

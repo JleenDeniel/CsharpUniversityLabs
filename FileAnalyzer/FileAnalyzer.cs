@@ -1,20 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using  System.Linq;
-
+using System.IO;
+using System.Linq;
 
 namespace FileAnalyzer {
-    public static class FileAnalyzer {
-        public static Dictionary<string, int> Analyze(string input) {
-            var dict = new Dictionary<string, int>(CountWords(Replacer(input)));
-            return dict;
+    public class FileAnalyzer {
+        private readonly Dictionary<string, int> _textDictionary = new Dictionary<string, int>();
+        
+        public FileAnalyzer(){ }
+
+        public FileAnalyzer(string path){
+            _textDictionary = FileParser(path);
         }
 
+        private Dictionary<string, int> FileParser(string path){
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            
+            using (var reader = new StreamReader(path)) {
+                while (!reader.EndOfStream) {
+                    string[] line = reader.ReadLine()?.Split(new[] {' ', '\t', ',', '.'}, StringSplitOptions.RemoveEmptyEntries);
+                    if (line != null) {
+                        foreach (var word in line) { 
+                            string updWord = word.Trim(new[] {',', '.', '?', '!'});
+                            if (dictionary.ContainsKey(updWord)) {
+                                dictionary[updWord]++;
+                            }
+                            else {
+                                dictionary.Add(updWord, 1);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return dictionary;
+        }
+
+        public Dictionary<string, int> GetDictionary => _textDictionary;
         
-        public static Dictionary<string, int> MostFrequentWord(Dictionary<string, int> dictionary){
+        public  Dictionary<string, int> MostFrequentWord(){
             var resultDict = new Dictionary<string, int>();
-            var maxValue = dictionary.Values.Max();
-            foreach (var pair in dictionary) {
+            var maxValue = _textDictionary.Values.Max();
+            foreach (var pair in _textDictionary) {
                 if (pair.Value == maxValue) {
                     resultDict[pair.Key] = maxValue;
                 }
@@ -22,42 +49,19 @@ namespace FileAnalyzer {
 
             return resultDict;
         }
-
-        public static Dictionary<string, int> MostFrequentWord(string input){
-            var res = Analyze(Replacer(input));
-            return MostFrequentWord(res);
-        }
-
-            private static Dictionary<string, int> CountWords(string input) {
-            Dictionary<string, int> dict = new Dictionary<string, int>();
-            string[] wordsArray = input.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var word in wordsArray) {
-                if (!dict.ContainsKey(word.ToLower())) {
-                    dict.Add(word.ToLower(), 1);
-                }
-                else {
-                    dict[word.ToLower()]++;
-                }
-
-            }
-            return dict;
-        }
-
-        public static string[] FindWord(string text, string wordToFind){ 
-            var dict = Analyze(text); 
-            if (!dict.ContainsKey(wordToFind)) { 
+        
+        public  Tuple<string, int> FindWord(string wordToFind){
+            if(!_textDictionary.ContainsKey(wordToFind)) { 
                 throw new ArgumentException("No such word");
-            } 
-            string[] res = new string[1]; 
-            res[0] = wordToFind.Length.ToString();
-            return res;
+            }
+            else {
+                //todo вернуть кортеж
+                return Tuple.Create(wordToFind, _textDictionary[wordToFind]);
+            }
         }
-
-        private static string Replacer(string input) {
-            string res = input.Replace(",", string.Empty).Replace(".", string.Empty).Replace("/t", string.Empty)
-                .Replace("!",string.Empty).Replace("?", string.Empty);
-            return res;
-        }
+        
+        //todo поменять логику: сначала парсить а потом джоинить
+        // UPD этого метода больше нет 
 
         
     }
